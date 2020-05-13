@@ -3,4 +3,4 @@
 
 # Models
 
-[Age + Gender](https://github.com/sugarkubes/docs/master/age_gender.md)
+- [Age + Gender](https://github.com/sugarkubes/docs/master/age_gender.md)
