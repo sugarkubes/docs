@@ -117,8 +117,6 @@ http://0.0.0.0:9090/predict \\
 |------------  |-------------------------------
 | PORT         | 8080
 | HOST         | 0.0.0.0
-| GPU          | "" (true for GPU version)
-| GPU_FRACTION | 0.25 (25% of the gpu will be allocated to this model)
 | BASIC_AUTH_USERNAME | ""
 | BASIC_AUTH_PASSWORD | ""
 | INPUT_WIDTH | 640
