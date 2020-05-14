@@ -134,7 +134,6 @@ http://0.0.0.0:9090/predict \\
 - response is top left and bottom right of bounding box. 
 ```json
 {
-  //         x1   y1   x2   y2   w    h  conf age gender
   "data": [
       [
       "Person", #class name
