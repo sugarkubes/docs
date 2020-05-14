@@ -3,9 +3,9 @@
 *Yolov3 object detection*
 
 This container comes with 3 models: 
-- Fast (80 classes COCO)
-- Accurate (80 classes COCO)
-- Accurate 600 (600 classes trained on google open images)
+- Fast (80 classes COCO) [List Of Objects](https://s3.us-west-1.wasabisys.com/public.sugarkubes/repos/sugar-cv/object-detection/objects.csv)
+- Accurate (80 classes COCO) [List Of Objects](https://s3.us-west-1.wasabisys.com/public.sugarkubes/repos/sugar-cv/object-detection/objects.csv)
+- Accurate 600 (600 classes trained on google open images) [List Of Objects](https://s3.us-west-1.wasabisys.com/public.sugarkubes/repos/sugar-cv/object-detection/accurate-600.csv)
 
 ## Speed
 | Hardware 	| Model        | Inference Time (Milliseconds)
