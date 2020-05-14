@@ -10,3 +10,4 @@
 
 - [Age + Gender](https://github.com/sugarkubes/docs/blob/master/age_gender.md)
 - [Object Detection](https://github.com/sugarkubes/docs/blob/master/object-detection.md)
+- [OpenVINO pedestrian detection with atrributes](https://github.com/sugarkubes/docs/blob/master/openvino-pedestrian-detection.md)
