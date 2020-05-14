@@ -2,6 +2,10 @@
 
 *Yolov3 object detection*
 
+This container comes with 3 models: 
+- Fast (80 classes COCO)
+- Accurate (80 classes COCO)
+- Accurate 600 (600 classes trained on google open images)
 
 ## Speed
 | Hardware 	| Model        | Inference Time (Milliseconds)
@@ -16,13 +20,18 @@
 This model's inference time increases sublinearly with the number of people.
 
 ## Accuracy
-| Detection       | Accuracy
+| Detection      | Accuracy
 |---------------	|-------------------------------
-| Face - Accurate | ~95% (frontal faces) (accurate model)
-| Face - Fast     | ~90% (frontal faces) (accurate model)
-| Age      	      | +- 5 years
+| Accurate       | 57.9 mAP (COCO)
+| Fast           | 33.1 mAP (COCO)
+| Accurate-600   | untested
 
-There are two detectors built into this container. You can toggle between them in the post parameters
+## GPU Consumption
+| Model          | Consumption (MB)
+|---------------	|-------------------------------
+| Accurate       | minimum ~500MB
+| Fast           | minimum ~100MB
+| Accurate-600   | minimum ~500MB
 
 ## Detectors
 
@@ -57,14 +66,19 @@ There are two detectors built into this container. You can toggle between them i
 ```sh
 
 #cpu
-docker run -ti \\
--p 9090:9090 \\
-sugarkubes/tensorflow-age-gender:cpu
+docker run --rm -ti \
+-p 8080:8080 \
+sugarkubes/yolo-object-detection:cpu
 
-#gpu
-nvidia-docker run -ti \\
--p 9090:9090 \\
-sugarkubes/tensorflow-age-gender:gpu
+#gpu cuda 10.1
+docker run --rm -ti \
+-p 8080:8080 \
+sugarkubes/yolo-object-detection:gpu-cuda-10.1
+
+#gpu cuda 10.2
+docker run --rm -ti \
+-p 8080:8080 \
+sugarkubes/yolo-object-detection:gpu-cuda-10.2
 ```
 
 
@@ -87,7 +101,9 @@ http://0.0.0.0:9090/predict \\
 - Post parameters
 ```json
 {
-  "face_detector": "fast", # One of ["accurate", "fast"]
+  "nms": 0.5", # non-max supression
+  "confidence": 0.5, # confidence score for each bounding boxe (must be above this to be returned)
+  "draw": true, # draw bounding boxes on returned image
   "return_image": true, # use false for production/faster results
   "url": 'https://your-image.jpg', # use url or b64 image
   "b64": "", # base 64 encoded image
@@ -105,6 +121,10 @@ http://0.0.0.0:9090/predict \\
 | GPU_FRACTION | 0.25 (25% of the gpu will be allocated to this model)
 | BASIC_AUTH_USERNAME | ""
 | BASIC_AUTH_PASSWORD | ""
+| INPUT_WIDTH | 640
+| INPUT_HEIGHT | 640
+| MODEL | accurate
+| LOG | false
 
 ## Google Cloud Run Enabled
 
@@ -113,12 +133,25 @@ http://0.0.0.0:9090/predict \\
 
 ## Response
 
+- response is top left and bottom right of bounding box. 
 ```json
 {
   //         x1   y1   x2   y2   w    h  conf age gender
-  "faces": [[451, 0, 914, 452, 463, 514, -1, 37, "M"]],
+  "data": [
+      [
+      "Person", #class name
+      0.7623502612113953, # confidence
+      25,   # x1
+      206,  # y1
+      224,  # x2
+      684   # y2
+    ],
+    ... other objects
+  ],
   "image_size": [1920, 1080],
   "inference_time": 431.462,
+  "confidence":0.5,
+  "nms": o.5,
 }
 ```
 
