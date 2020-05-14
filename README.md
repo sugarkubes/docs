@@ -9,3 +9,4 @@
 # Models
 
 - [Age + Gender](https://github.com/sugarkubes/docs/blob/master/age_gender.md)
+- [Object Detection](https://github.com/sugarkubes/docs/blob/master/object-detection.md)
