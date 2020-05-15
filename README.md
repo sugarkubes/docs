@@ -12,3 +12,5 @@
 - [Object Detection](https://github.com/sugarkubes/docs/blob/master/object-detection.md)
 - [openVINO pedestrian detection with atrributes](https://github.com/sugarkubes/docs/blob/master/openvino-pedestrian-detection.md)
 - [openVINO Pose Estimation](https://github.com/sugarkubes/docs/blob/master/openvino-pose-estimation.md)
+- [TFJS indoor outdoor image classifier](https://github.com/sugarkubes/docs/blob/master/tfjs-indoor-outdoor.md)
+
